@@ -4,4 +4,12 @@ export default class TodoListItem {
     this.description = description;
     this.done = done;
   }
+
+  toggle() {
+    if (this.done) {
+      this.done = false;
+    } else {
+      this.done = true;
+    }
+  }
 }
