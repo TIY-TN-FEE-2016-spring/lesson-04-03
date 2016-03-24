@@ -6,11 +6,26 @@
   <link rel="stylesheet" href="/app.css">
 </head>
 <body>
+  <div class="todos">
+    <h2 class="todos__title"></h2>
+
+    <ul class="todo-list">
+      <!-- <li class="todo-list-item">
+        <span class="todo-list-item">${description}</span>
+        <button>Mark Complete</button>
+      </li> -->
+    </ul>
+  </div>
 
   <script src="/vendor.js" charset="utf-8"></script>
   <script src="/app.js" charset="utf-8"></script>
 
   <script type="text/javascript">
+    // Find the app module
+    var app = require('app');
+
+    // Run the app module
+    app();
   </script>
 </body>
 </html>
