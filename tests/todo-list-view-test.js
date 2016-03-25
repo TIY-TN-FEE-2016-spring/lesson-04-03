@@ -30,4 +30,14 @@ QUnit.module(`TodoListView`, () => {
     assert.equal(homeworkElement.querySelector(`.todos__title`).innerHTML, `Homework`,
       `A TodoListView should fill in the title: homeworkView`);
   });
+
+  test(`it fills out todo items list`, (assert) => {
+    const list = new TodoList(`Shopping`,
+      [{ description: `Salad`, done: false }, { description: `Milk`, done: true }]);
+    const element = createTestElement();
+    const view = new TodoListView(element, list);
+
+    assert.equal(element.querySelectorAll(`li`).length, 2,
+      `A TodoListView should have li's for each item in the list`);
+  });
 });
