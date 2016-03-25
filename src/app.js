@@ -16,6 +16,5 @@ export default function () {
       const listElement = document.querySelector(`.todos`);
 
       const view = new TodoListView(listElement, list);
-      debugger;
     });
 }

@@ -15,10 +15,12 @@ export default class TodoListView {
     this.renderItems();
   }
 
+  // Going to be similar to the Profile part of the assignment
   renderTitle() {
     this.element.querySelector(`.todos__title`).innerText = this.list.title;
   }
 
+  // Similar to the characters and comics list of the assignment
   renderItems() {
     const ul = this.element.querySelector(`ul`);
 
