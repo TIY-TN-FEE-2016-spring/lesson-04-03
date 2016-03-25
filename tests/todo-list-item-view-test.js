@@ -28,4 +28,25 @@ QUnit.module(`TodoListItemView`, () => {
     assert.equal(view.element.querySelector(`.todo-list-item__status`).innerText, `DONE`,
       `The status for a completed todo should be filled in as "DONE"`);
   });
+
+  test(`a user can click to change status`, (assert) => {
+    // Since we're clicking and events are async we have to setup an async test
+    const done = assert.async();
+
+    const todo = new TodoListItem(`Salad`, false);
+    const view = new TodoListItemView(todo);
+
+    const button = view.element.querySelector(`.todo-list-item__status`);
+    button.click();
+
+    // Do this next (should be after the click handler finishes up...)
+    window.setTimeout(() => {
+      assert.equal(todo.done, true,
+        `Clicking the status button should make the todo change its done value`);
+      assert.equal(button.innerText, `DONE`,
+        `The status for a completed todo should be filled in as "DONE"`);
+
+      done();
+    });
+  });
 });

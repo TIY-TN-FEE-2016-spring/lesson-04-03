@@ -5,11 +5,25 @@ export default class TodoListItemView {
     this.todo = todo;
     this.element = document.createElement(`li`);
 
-    const statusStr = this.getStatus();
-
     this.element.innerHTML = `
-      <span class="todo-list-item__desc">${this.todo.description}</span>
-      <button class="todo-list-item__status">${statusStr}</button>`;
+      <span class="todo-list-item__desc"></span>
+      <button class="todo-list-item__status"></button>`;
+    this.render();
+
+    this.element.querySelector(`.todo-list-item__status`).addEventListener(`click`, () => {
+      // Change the todo status
+      this.todo.toggle();
+
+      this.render();
+    });
+  }
+
+  render() {
+    const statusButton = this.element.querySelector(`.todo-list-item__status`);
+    this.element.querySelector(`.todo-list-item__desc`).innerText = this.todo.description;
+
+    statusButton.innerText = this.getStatus();
+    statusButton.classList.toggle(`todo-list-item__status--done`, this.todo.done);
   }
 
   getStatus() {
@@ -20,10 +34,3 @@ export default class TodoListItemView {
     return 'Mark Complete'
   }
 }
-
-/**
- * <li class="todo-list-item">
- *   <span class="todo-list-item__desc">${description}</span>
- *   <button>Mark Complete</button>
- * </li>
- */
